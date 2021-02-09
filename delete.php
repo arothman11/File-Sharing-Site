@@ -10,12 +10,6 @@
     }
     else {
         echo "File deletion failed. Please try again.";
-        if(is_writable($filename)) {
-            echo "it is writable";
-        }
-        else {
-            echo "not writable";
-        }
         echo $dir_path;
         echo $full_path;
     }

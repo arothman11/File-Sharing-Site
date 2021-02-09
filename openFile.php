@@ -21,11 +21,10 @@
         // Now we need to get the MIME type (e.g., image/jpeg).  PHP provides a neat little interface to do this called finfo.
         $finfo = new finfo(FILEINFO_MIME_TYPE);
         $mime = $finfo->file($full_path);
-
+        
+        ob_clean();
         // Finally, set the Content-Type header to the MIME type of the file, and display the file.
         header("Content-Type: ".$mime);
-        $size = filesize($full_path);
-        header("Content-length: $size");
         header('content-disposition: inline; filename="'.$filename.'";');
         readfile($full_path);
         ?>

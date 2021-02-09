@@ -5,7 +5,11 @@ session_start();
 $filename = basename($_FILES['uploadedfile']['name']);
 if( !preg_match('/^[\w_\.\-]+$/', $filename) ){
 	echo "Invalid filename";
-    echo $filename;
+    echo '
+    <form action="displayFiles.php" method="Post">
+        <button type="submit">Go Back</button>
+   </form>
+    '; 
 	exit;
 }
 
