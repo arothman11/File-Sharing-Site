@@ -16,17 +16,16 @@
    </div>
     <form action="newUser.php">
         <label for="new">Don't have a username?</label>
-        <button name="new">Create New Account</button>
+        <button name="new" id="new">Create New Account</button>
     </form>
 <?php
-session_destroy();
 session_start();
 $username = $_GET['username'];
 $userList = fopen('/home/emcclanahan/CSE330_Module2_Files/users.txt','r') or die("didn't open"); //path to file
 
 while($line = fgets($userList)) {
-    $line = rtrim($line, "\r\n");
-    if ($username == $line) {
+    $line = rtrim($line, "\r\n"); //trimming off extra characters
+    if ($username == $line) { //checking if the username is valid
         $_SESSION["user"]=$username;
         fclose($userList);
         header("Location: displayFiles.php");
@@ -36,11 +35,3 @@ fclose($userList);
 ?>
 </body>
 </html>
-
-<!-- 
-    sign out not working
-    delete user is messy with "test" and "testing"
-    validate html
-    write readme
-    add comments to code
- -->

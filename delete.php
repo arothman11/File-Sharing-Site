@@ -2,21 +2,19 @@
     session_start();
     $username=$_SESSION['user'];
     $filename = $_POST['delete'];
-    $dir_path = sprintf("/home/emcclanahan/CSE330_Module2_Files/%s", $username);
-    $full_path = sprintf("/home/emcclanahan/CSE330_Module2_Files/%s/%s", $username, $filename);
+    $dir_path = sprintf("/home/emcclanahan/CSE330_Module2_Files/%s", $username); //path to the directory
+    $full_path = sprintf("/home/emcclanahan/CSE330_Module2_Files/%s/%s", $username, $filename); //path to the file
     chdir($dir_path);
-    if (unlink($full_path)) {
+    if (unlink($full_path)) { //delete the file
         echo "File Successfully Deleted!";
     }
-    else {
+    else { //if it fails
         echo "File deletion failed. Please try again.";
-        echo $dir_path;
-        echo $full_path;
     }
     echo '
     <form action="displayFiles.php" method="Post">
         <button type="submit">Go Back</button>
-   </form>
+    </form>
     '; 
 ?>
 

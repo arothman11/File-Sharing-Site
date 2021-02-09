@@ -13,15 +13,17 @@
             echo "Invalid username";
             exit;
         }
-    
+        
         echo "<h1 id='user'>$username's Files</h1>";
         echo '
-            <form action="main.php" method="Post" id="logout">
+            <form action="logout.php" method="Post" id="logout">
                 <button type="submit" id="logout-button">Log Out</button>
             </form>
             '; 
+
         $dir = opendir("/home/emcclanahan/CSE330_Module2_Files/" . $username);
         
+        //creating an array with all the user's files
         $filesArray = array();
         while (($file = readdir($dir)) !== false){
            if (($file==".." || $file==".")) {
@@ -31,11 +33,13 @@
            }
         }
 
+        //if they clicked sort, sort the array alphabetically
         $sorted = $_POST['sort'];
         if ($sorted =='sorted') {
             natcasesort($filesArray);
         }
 
+        //display files as buttons
         foreach($filesArray as $file) {
             echo '<form action="openFile.php" method="Post" class="files">';
             echo "<button type='submit' name='file' value='$file'>$file</button>";
@@ -46,7 +50,7 @@
             echo '</form>';
         }
         
-
+    
         echo '<form action="displayFiles.php" method="Post">';
         echo "<button type='submit' name='sort' value='sorted'>Sort Files Alphabetically</button>";
         echo '</form>';
