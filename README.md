@@ -15,3 +15,11 @@ For our creative portion, we implemented three things:
 Grading Comments:  
 -3 FIEO not followed  
 -2 intuitive: after viewing files could not navigate   
+
+
+### Regrade feedback
+
+> -3 FIEO not followed  
+  * 1.5 points returned - input was filtered, but output was not escaped
+> -2 intuitive: after viewing files could not navigate   
+  * 0 points returned - When logging in and viewing a file, a user can hit back on their browser and be returned to the displayFiles.php page as expected. However, after hitting the 'sort alphabetically' button, any time a user navigates back, the form needs to be resubmitted. I believe that is what "after viewing files could not navigate" refers to.
